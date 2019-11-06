@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--使用setXxx()方法-->
+    <bean id="studentEntity1" class="com.tom.spring.entity.StudentEntity">
+        <property name="studentId" value="1001"/>
+        <property name="name" value="张三"/>
+        <property name="classId" value="1"/>
+    </bean>
+
+    <!--使用构造方法-->
+    <bean id="studentEntity2" class="com.tom.spring.entity.StudentEntity">
+        <constructor-arg value="1002" />
+        <constructor-arg value="李四" />
+        <constructor-arg value="2"/>
+    </bean>
+
+    <bean id="studentEntity" class="com.tom.spring.entity.StudentEntity">
+
+    </bean>
+
+
+</beans>

@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.tom.spring.test.StudentTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.167 s <<< FAILURE! - in com.tom.spring.test.StudentTest
+springTest(com.tom.spring.test.StudentTest)  Time elapsed: 0.038 s  <<< ERROR!
+org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type [com.tom.spring.entity.Student] is defined: expected single matching bean but found 6: student,student05,student03,student04,student02,factoryStudent
+	at com.tom.spring.test.StudentTest.springTest(StudentTest.java:31)
+

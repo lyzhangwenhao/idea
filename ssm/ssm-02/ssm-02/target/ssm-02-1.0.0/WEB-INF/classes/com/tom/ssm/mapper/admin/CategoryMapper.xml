@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.tom.ssm.mapper.admin.CategoryMapper">
+    <!--根据书的Id查类别-->
+    <!--CategoryEntity getCategoryByBookId(Integer id);-->
+    <select id="getCategoryByBookId" resultType="com.tom.ssm.entity.CategoryEntity">
+        select category_id,category_name from category where category_id = #{id}
+    </select>
+
+    <!--查询所有种类-->
+    <!--List<CategoryEntity> findAllCategory();-->
+    <select id="findAllCategory" resultType="com.tom.ssm.entity.CategoryEntity">
+        select category_id,category_name from category
+    </select>
+
+
+</mapper>

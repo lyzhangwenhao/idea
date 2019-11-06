@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.tom.mapper.UserMapper">
+    <!--开启UserMapper的二级缓存机制-->
+    <cache></cache>
+    <!--public List<UserMapper> findAllUser();-->
+    <select id="findAllUser" resultType="com.tom.entity.UserEntity">
+        select * from user
+    </select>
+
+    <!--int addUser(UserEntity user);-->
+    <insert id="addUser" parameterType="com.tom.entity.UserEntity">
+        insert into user values (#{id},#{username},#{password})
+    </insert>
+
+    <!--List<UserEntity> findUserLike();-->
+    <select id="findUserLike" resultType="com.tom.entity.UserEntity">
+        <!--select * from user where username like '%${username}%'-->
+        select * from user where username like #{username}
+
+    </select>
+
+    <!--List<UserEntity> findUserByResultMap();-->
+    <select id="findUserByResultMap" resultMap="allUserMap">
+        select * from user
+    </select>
+
+    <resultMap id="allUserMap" type="com.tom.entity.UserEntity">
+        <!--column:指定结果集的列名     property:指定对象属性名-->
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+    </resultMap>
+
+    <!--void insertUser(UserEntity userEntity);-->
+    <insert id="insertUser" >
+        insert into user values(#{param1.id},#{param1.username},#{param1.password}),(#{param2.id},#{param2.username},#{param2.password})
+    </insert>
+
+</mapper>

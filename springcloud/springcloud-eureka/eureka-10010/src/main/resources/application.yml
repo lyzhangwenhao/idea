@@ -1,0 +1,16 @@
+server:
+  port: 10010
+
+
+eureka:
+  instance:
+    hostname: eureka-10010
+  client:
+    register-with-eureka: true
+    fetch-registry: false
+    service-url:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka,http://eureka-10011:10011/eureka,http://eureka-10012:10012/eureka
+     defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+spring:
+  application:
+    name: eureka-10010

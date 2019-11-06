@@ -1,0 +1,25 @@
+server:
+  port: 10022
+
+
+spring:
+  application:
+    name: ServerProvide-1002X
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/cloud-10021?serverTimezone=UTC
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10010/eureka,http://localhost:10011/eureka,http://localhost:10012/eureka
+  instance:
+    instance-id: ServerProvide-10022
+    prefer-ip-address: true

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.tom.ssm.mapper.admin.BookMapper">
+
+    <!--查询所有图书-->
+    <!--List<BookEntity> findAllBook();-->
+    <resultMap id="findAllBookMap" type="com.tom.ssm.entity.BookEntity">
+        <id column="book_id" property="bookId"/>
+        <result column="book_name" property="bookName"/>
+        <result column="book_price" property="bookPrice"/>
+        <result column="book_desc" property="bookDesc"/>
+        <!--查询category数据库表-->
+        <association column="category_id" property="categoryEntity" select="com.tom.ssm.mapper.admin.CategoryMapper.getCategoryByBookId"></association>
+        <!--查询stock数据库表-->
+        <association column="book_id" property="stockEntity" select="com.tom.ssm.mapper.StockMapper.getStockByBookId"></association>
+    </resultMap>
+    <select id="findAllBook" resultMap="findAllBookMap">
+        select * from book
+    </select>
+
+
+    <!--/**
+    * 添加图书
+    * @param bookEntity
+    */-->
+    <!--int addBook(BookEntity bookEntity);-->
+    <insert id="addBook" >
+        insert into book
+        values
+        (#{bookEntity.bookId},
+        #{bookEntity.bookName},
+        #{bookEntity.bookPrice},
+        #{bookEntity.bookDesc},
+        #{bookEntity.categoryEntity.categoryId})
+    </insert>
+
+
+    <!--/**
+     * 通过BookId删除Book
+     * @param bookId
+     * @return
+     */
+    int delBookByBookId(Integer bookId);-->
+    <delete id="delBookByBookId">
+        delete from book where book_id = #{bookId}
+    </delete>
+
+</mapper>

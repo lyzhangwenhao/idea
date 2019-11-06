@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
+      username: root
+      password: root
+#      driver-class-name: com.mysql.jdbc.Driver
+
+  #模版引擎
+  thymeleaf:
+    mode: HTML
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+  http:
+      encoding:
+        charset: UTF-8
+        force: true

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 配置 -->
+<configuration>
+    <!-- 1.  properties: 属性配置
+            <property>: 一个具体的属性配置
+            resource: 引入类路径下的属性文件
+            url:  引入网络路径或者是磁盘路径下的属性文件.
+    -->
+    <properties resource="db.properties">
+        <!-- <property name="jdbc.driver" value="com.mysql.jdbc.Driver"/> -->
+    </properties>
+
+    <!-- 2. settings:  包含了很多重要的设置项 -->
+    <settings>
+        <!-- 映射下划线到驼峰命名 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。
+            特定关联关系中可通过设置 fetchType 属性来覆盖该项的开关状态。-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--当开启时，任何方法的调用都会加载该对象的所有属性。 否则，每个属性会按需加载-->
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <!--显示log4j从数据库查询出来的结果集-->
+        <!--<setting name="logImpl" value="STDOUT_LOGGING"/>-->
+        <!--配置Mybatis的二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <environments default="development">
+        <!-- 具体的环境 -->
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}" />
+                <property name="url" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.username}" />
+                <property name="password" value="${jdbc.password}" />
+            </dataSource>
+        </environment>
+        <environment id="c3p0">
+            <transactionManager type="JDBC"/>
+            <dataSource type="com.tom.utils.C3p0Config">
+                <property name="driverClass" value="${jdbc.driver}"/>
+                <property name="jdbcUrl" value="${jdbc.url}"/>
+                <property name="user" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+
+        <!-- 	<environment id="test">
+                <transactionManager type=""></transactionManager>
+                <dataSource type=""></dataSource>
+            </environment> -->
+    </environments>
+
+
+    <!--5.  引入SQL映射文件
+             <mapper>:引入一个SQL映射文件
+                 resource: 引入类路径下的SQL映射文件
+             <package>: 批量引入SQL映射文件
+                     要求: SQL映射文件 必须与 Mapper接口同名同位置.
+    -->
+    <mappers>
+        <!--<mapper resource="com/tom/mapper/UserMapper.xml"/>
+        <mapper resource="com/tom/mapper/UserInfoMapper.xml"/>-->
+        <package name="com.tom.mapper"/>
+    </mappers>
+
+</configuration>

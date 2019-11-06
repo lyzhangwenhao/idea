@@ -1,0 +1,13 @@
+server:
+  port: 10031
+
+spring:
+  application:
+    name: Consumer-10031
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10010/eureka,http://localhost:10011/eureka,http://localhost:10012/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ServerConsumer-10031

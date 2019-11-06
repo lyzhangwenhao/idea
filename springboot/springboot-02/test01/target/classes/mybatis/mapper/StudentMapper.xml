@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tom.test01.mapper.StudentMapper">
+
+   <!-- /**
+    * 查询所有的Student信息
+    * @return
+    */
+    List<Student> list();-->
+
+    <select id="list" resultType="com.tom.test01.entity.Student">
+        select * from student
+    </select>
+
+    <!--/**
+    * 插入一条Student信息
+    * @param student
+    * @return
+    */
+    Integer insert(@Param("stu") Student student);-->
+    <insert id="insert">
+        insert into student values(null,#{stu.stuName},#{stu.stuAge},#{stu.stuAddress})
+    </insert>
+</mapper>

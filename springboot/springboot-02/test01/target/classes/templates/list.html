@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table align="center">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Address</th>
+        </tr>
+
+
+        <tr th:each="stu :${stuList}">
+            <td th:text="${stu.stuId}">Id</td>
+            <td th:text="${stu.stuName}">Name</td>
+            <td th:text="${stu.stuAge}">Age</td>
+            <td th:text="${stu.stuAddress}">Address</td>
+        </tr>
+
+
+    </table>
+</body>
+</html>

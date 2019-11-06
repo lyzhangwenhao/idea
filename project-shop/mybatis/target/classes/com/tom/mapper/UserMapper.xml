@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 配置SQL映射
+	 namespace: 名称空间.
+	 		1. 随便写
+	 		2. Mapper接口开发，不能随便写，按照规定来写。
+
+ -->
+<mapper namespace="com.tom.mapper.UserMapper">
+    <!--
+        <select>: 定义查询语句
+            id:  <select>的唯一标识
+            resultType:  结果集的映射类型。
+            #{id}: 获取参数值
+
+     -->
+    <!--public UserMapper getUserByUsernameAndPassword(String username,String password);-->
+    <select id="getUserByUsernameAndPassword" resultType="com.tom.entity.UserBean">
+        select * from user where username = #{param1} and password = #{param2}
+    </select>
+    <!--public List<UserBean> findAdd();-->
+    <select id="findAdd" resultType="com.tom.entity.UserBean">
+        select * from user
+    </select>
+
+
+</mapper>

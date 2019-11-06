@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--组合扫描-->
+
+<!--    <context:component-scan base-package="com.tom.spring.annotation" use-default-filters="false">-->
+<!--        &lt;!&ndash;指定特定注解扫描&ndash;&gt;-->
+<!--        &lt;!&ndash;<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;指定类名扫描&ndash;&gt;-->
+<!--        &lt;!&ndash;<context:include-filter type="assignable" expression="com.tom.spring.annotation.controller.UserController"/>&ndash;&gt;-->
+<!--    </context:component-scan>-->
+
+    <context:component-scan base-package="com.tom.spring.annotation" >
+        <!--指定排除注解扫描-->
+        <!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+        
+        <!--指定排除类名扫描-->
+        <!--<context:exclude-filter type="assignable" expression="com.tom.spring.annotation.controller.UserController"/>-->
+    </context:component-scan>
+
+</beans>

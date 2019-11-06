@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.tom.ssm.mapper.StockMapper">
+    <!--根据书的Id查库存-->
+    <!--StockEntity getStockByBookId(Integer id);-->
+    <select id="getStockByBookId" resultType="com.tom.ssm.entity.StockEntity">
+        select stock_id,book_id,book_stock from stock where book_id = #{id}
+    </select>
+
+
+    <!--/**
+     * 插入库存
+     * @param bookEntity
+     * @return
+     */
+    int addStock(BookEntity bookEntity);-->
+    <insert id="addStock">
+        insert into stock values(null,#{bookEntity.bookId},#{bookEntity.stockEntity.bookStock})
+    </insert>
+
+
+    <!--/**
+     * 通过BookId删除库存信息
+     * @param bookId
+     * @return
+     */
+    int delStockByBookId(Integer bookId);-->
+    <delete id="delStockByBookId">
+        delete from stock where book_id = #{bookId}
+    </delete>
+</mapper>

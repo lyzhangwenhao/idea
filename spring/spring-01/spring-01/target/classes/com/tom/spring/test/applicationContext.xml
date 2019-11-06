@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--使用set方法-->
+    <bean id="student" class="com.tom.spring.entity.Student">
+        <property name="id" value="1"/>
+        <property name="number" value="1001"/>
+        <property name="name" value="马化腾"/>
+        <property name="major" value="软件工程"/>
+    </bean>
+
+    <!--使用构造器方法-->
+    <bean id="student02" class="com.tom.spring.entity.Student">
+        <constructor-arg value="2"/>
+        <constructor-arg value="1002"/>
+        <constructor-arg value="马云"/>
+        <constructor-arg value="互联网金融"/>
+    </bean>
+
+    <!--当赋值出现特殊字符时-->
+    <bean id="student03" class="com.tom.spring.entity.Student">
+        <property name="id" value="4"/>
+        <property name="number" value="1004"/>
+        <property name="name" value="刘强东"/>
+        <property name="major">
+            <value><![CDATA[<互联网金融>]]></value>
+        </property>
+    </bean>
+
+    <!--当赋值时出现对象类型时-->
+    <bean id="com" class="com.tom.spring.entity.Computer">
+        <property name="id" value="1"/>
+        <property name="brand" value="联想"/>
+        <property name="color" value="黑色"/>
+    </bean>
+    <bean id="student04" class="com.tom.spring.entity.Student">
+        <property name="id" value="4"/>
+        <property name="number" value="1004"/>
+        <property name="name" value="张三"/>
+        <property name="major" value="家里蹲"/>
+        <property name="computer" ref="com"/>
+    </bean>
+
+    <!--内部bean-->
+    <bean id="student05" class="com.tom.spring.entity.Student">
+        <property name="id" value="4"/>
+        <property name="number" value="1004"/>
+        <property name="name" value="张三"/>
+        <property name="major" value="家里蹲"/>
+        <property name="computer">
+            <!--内部bean只能在内部使用，id可以省略不写-->
+            <bean class="com.tom.spring.entity.Computer">
+                <property name="id" value="1"/>
+                <property name="brand" value="联想"/>
+                <property name="color" value="黑色"/>
+            </bean>
+        </property>
+        <!--通过级联赋值-->
+        <property name="computer.color" value="白色"/>
+    </bean>
+
+    <bean id="class01" class="com.tom.spring.entity.StudentClass">
+        <property name="classId" value="1"/>
+        <property name="className" value="一班"/>
+        <property name="studentList">
+            <list >
+                <ref bean="student"/>
+                <ref bean="student02"/>
+                <ref bean="student03"/>
+            </list>
+        </property>
+    </bean>
+
+    <!--工厂bean-->
+    <bean id="factoryStudent" class="com.tom.spring.factory.StudentFactory"></bean>
+</beans>
